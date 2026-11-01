@@ -29,8 +29,8 @@ from .images import Image, validate_assets, validate_image_budget
 from .questions import validate_questions
 from .responses import DecisionResponse, KeyExpiry, KeyInfo, Model, parse_key_info, parse_response
 
-DEFAULT_BASE_URL = "https://api.mellix.ai"
-DEFAULT_ADMIN_BASE_URL = "https://console.mellix.ai"
+DEFAULT_BASE_URL = "https://api.mellix.com"
+DEFAULT_ADMIN_BASE_URL = "https://console.mellix.com"
 ENV_API_KEY = "MELLIX_API_TOKEN"
 ENV_ADMIN_KEY = "MELLIX_ADMIN_KEY"
 RETRY_STATUSES = frozenset({429, 502, 503})

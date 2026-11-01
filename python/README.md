@@ -178,7 +178,7 @@ rolled["key"]  # the new key; rolled["replaces"]["expires_on"] is when the old o
 client.admin.keys.revoke("c_1a2b3c4d")
 ```
 
-Key lifetimes are 30, 90, 180 or 365 days (90 by default), never longer than your organisation allows. These calls go to `https://console.mellix.ai` (`admin_base_url` to change it) and may be made 120 times a minute per admin key. A missing key or workspace raises `NotFoundError` (404); the key limit or an archived workspace raises `ConflictError` (409); both are kinds of `InvalidRequestError`. `create` and `roll` are retried only after a 429, so a retry never makes a second key. Every change shows in Activity in the console.
+Key lifetimes are 30, 90, 180 or 365 days (90 by default), never longer than your organisation allows. These calls go to `https://console.mellix.com` (`admin_base_url` to change it) and may be made 120 times a minute per admin key. A missing key or workspace raises `NotFoundError` (404); the key limit or an archived workspace raises `ConflictError` (409); both are kinds of `InvalidRequestError`. `create` and `roll` are retried only after a 429, so a retry never makes a second key. Every change shows in Activity in the console.
 
 ## Error handling
 

@@ -22,7 +22,7 @@ To rotate keys automatically, `client.admin.keys` lists, creates, rolls and revo
 Equivalent raw request:
 
 ```
-curl https://api.mellix.ai/v1/decide -H "Authorization: Bearer $MELLIX_API_TOKEN" -H "Content-Type: application/json" \
+curl https://api.mellix.com/v1/decide -H "Authorization: Bearer $MELLIX_API_TOKEN" -H "Content-Type: application/json" \
   -d '{"model": "myles-g-12b", "state": "Customer bought the item 12 days ago and has no receipt. Policy: refunds within 30 days with proof of purchase.", "questions": {"refund": {"type": "noul", "instructions": "Is a refund permitted under the policy?"}}}'
 ```
 
