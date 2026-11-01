@@ -1,0 +1,34 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "mellix"
+dynamic = ["version"]
+description = "Python client for the Mellix Decision API"
+readme = "README.md"
+license-files = ["LICENSE"]
+requires-python = ">=3.9"
+license = "Apache-2.0"
+authors = [{ name = "Charlie Hudson" }]
+dependencies = []
+keywords = ["mellix", "decision", "api", "llm"]
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "Typing :: Typed",
+]
+
+[tool.setuptools.dynamic]
+version = { attr = "mellix._version.__version__" }
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+mellix = ["py.typed"]
+
+[project.urls]
+Homepage = "https://www.mellix.ai/docs"
+Documentation = "https://www.mellix.ai/docs"
+Repository = "https://github.com/mellix-ai/mellix-sdk"
+Issues = "https://github.com/mellix-ai/mellix-sdk/issues"
