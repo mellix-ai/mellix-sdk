@@ -136,7 +136,7 @@ A submission is retried only after a refusal that stored nothing (429 `rate_limi
 
 Results can be downloaded once. They are deleted as soon as they have been sent to you in full, and results that are never downloaded are deleted 24 hours after the batch finished. After that, `results` and `stream_results` raises `BatchResultsDeletedError` (410, `.type` `"batch_results_deleted"`, `.results_deleted_at` says when), so save the results as you read them. A batch's status shows `results_deleted_at` once they are gone.
 
-Batches belong to the API key that submitted them. A rolled key is a new key: collect a batch's results with the key that submitted it, before that key stops working. See the [Batch API documentation](https://www.mellix.ai/docs/api/batches) for limits, the 24-hour window, webhooks, retention and where batch data is stored.
+Batches belong to the API key that submitted them. A rolled key is a new key: collect a batch's results with the key that submitted it, before that key stops working. See the [Batch API documentation](https://mellix.com/docs/api/batches) for limits, the 24-hour window, webhooks, retention and where batch data is stored.
 
 ## Key expiry
 

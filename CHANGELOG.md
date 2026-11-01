@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased
+
+- The package homepage and documentation links on npm and PyPI, and the Batch API link in each README, now go to `https://mellix.com/docs`. They pointed at mellix.ai, which does not exist.
+
 ## 0.0.1
 
 First release of the Python (`mellix` on PyPI) and JavaScript/TypeScript (`mellix` on npm) clients for the Mellix Decision API.

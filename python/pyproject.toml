@@ -28,7 +28,7 @@ where = ["src"]
 mellix = ["py.typed"]
 
 [project.urls]
-Homepage = "https://www.mellix.ai/docs"
-Documentation = "https://www.mellix.ai/docs"
+Homepage = "https://mellix.com/docs"
+Documentation = "https://mellix.com/docs"
 Repository = "https://github.com/mellix-ai/mellix-sdk"
 Issues = "https://github.com/mellix-ai/mellix-sdk/issues"
