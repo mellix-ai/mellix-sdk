@@ -13,8 +13,8 @@ import { AdminKeys } from "./admin.js";
 import { Batches, type BatchLine, type CreateBatchOptions, type CreatedBatch } from "./batches.js";
 import { idempotencyHeaders } from "./idempotency.js";
 
-export const DEFAULT_BASE_URL = "https://api.mellix.ai";
-export const DEFAULT_ADMIN_BASE_URL = "https://console.mellix.ai";
+export const DEFAULT_BASE_URL = "https://api.mellix.com";
+export const DEFAULT_ADMIN_BASE_URL = "https://console.mellix.com";
 const RETRY_STATUSES = new Set([429, 502, 503]);
 const BACKOFF_BASE_MS = 500;
 const MAX_RETRY_AFTER_MS = 60_000;
@@ -61,14 +61,14 @@ export interface DecideOptions {
 export interface MellixOptions {
   /** API token (starts with `mellix_`). Defaults to the MELLIX_API_TOKEN env var. Keep it on a server. */
   apiKey?: string;
-  /** Defaults to https://api.mellix.ai. Set it for self-hosted endpoints. */
+  /** Defaults to https://api.mellix.com. Set it for self-hosted endpoints. */
   baseURL?: string;
   /**
    * Admin key (starts with `mellix_admin_`) for `client.admin.keys`. Defaults to the MELLIX_ADMIN_KEY env var.
    * It manages your organisation's API keys and cannot call the Decision API. Keep it on a server.
    */
   adminKey?: string;
-  /** Where the key management API is. Defaults to https://console.mellix.ai. */
+  /** Where the key management API is. Defaults to https://console.mellix.com. */
   adminBaseURL?: string;
   /** Per-attempt timeout in milliseconds. Default 30000. */
   timeout?: number;

@@ -135,7 +135,7 @@ A submission is retried only after a refusal that stored nothing (429 `rate_limi
 
 Results can be downloaded once. They are deleted as soon as they have been sent to you in full, and results that are never downloaded are deleted 24 hours after the batch finished. After that, `results` and `streamResults` throws `BatchResultsDeletedError` (410, `.type` `"batch_results_deleted"`, `.resultsDeletedAt` says when), so save the results as you read them. A batch's status shows `results_deleted_at` once they are gone.
 
-Batches belong to the API key that submitted them. A rolled key is a new key: collect a batch's results with the key that submitted it, before that key stops working. See the [Batch API documentation](https://www.mellix.ai/docs/api/batches) for limits, the 24-hour window, webhooks, retention and where batch data is stored.
+Batches belong to the API key that submitted them. A rolled key is a new key: collect a batch's results with the key that submitted it, before that key stops working. See the [Batch API documentation](https://mellix.com/docs/api/batches) for limits, the 24-hour window, webhooks, retention and where batch data is stored.
 
 ## Key expiry
 
@@ -177,7 +177,7 @@ rolled.key; // the new key; rolled.replaces.expires_on is when the old one stops
 await client.admin.keys.revoke("c_1a2b3c4d");
 ```
 
-Key lifetimes are 30, 90, 180 or 365 days (90 by default), never longer than your organisation allows. These calls go to `https://console.mellix.ai` (`adminBaseURL` to change it) and may be made 120 times a minute per admin key. A missing key or workspace throws `NotFoundError` (404); the key limit or an archived workspace throws `ConflictError` (409); both are kinds of `InvalidRequestError`. `create` and `roll` are retried only after a 429, so a retry never makes a second key. Every change shows in Activity in the console.
+Key lifetimes are 30, 90, 180 or 365 days (90 by default), never longer than your organisation allows. These calls go to `https://console.mellix.com` (`adminBaseURL` to change it) and may be made 120 times a minute per admin key. A missing key or workspace throws `NotFoundError` (404); the key limit or an archived workspace throws `ConflictError` (409); both are kinds of `InvalidRequestError`. `create` and `roll` are retried only after a 429, so a retry never makes a second key. Every change shows in Activity in the console.
 
 ## Error handling
 

@@ -342,8 +342,8 @@ test("admin: list sends the admin key to the console", async () => {
 
 test("admin: the console is the default", () => {
   const client = new Mellix({ adminKey: ADMIN });
-  assert.equal(client.adminBaseURL, "https://console.mellix.ai");
-  assert.equal(DEFAULT_ADMIN_BASE_URL, "https://console.mellix.ai");
+  assert.equal(client.adminBaseURL, "https://console.mellix.com");
+  assert.equal(DEFAULT_ADMIN_BASE_URL, "https://console.mellix.com");
 });
 
 test("admin: list pages with limit and before; listAll follows them", async () => {

@@ -562,8 +562,8 @@ class AdminKeysTests(Base):
         self.assertEqual(req["headers"]["Authorization"], f"Bearer {ADMIN}")
 
     def test_the_console_is_the_default(self):
-        self.assertEqual(Mellix().admin_base_url, "https://console.mellix.ai")
-        self.assertEqual(DEFAULT_ADMIN_BASE_URL, "https://console.mellix.ai")
+        self.assertEqual(Mellix().admin_base_url, "https://console.mellix.com")
+        self.assertEqual(DEFAULT_ADMIN_BASE_URL, "https://console.mellix.com")
 
     def test_list_all_follows_pages(self):
         self.reply(200, {"data": [KEY], "has_more": True, "next_before": "abc+/="})
