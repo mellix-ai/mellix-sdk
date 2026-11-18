@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## 0.0.2
 
 - The package homepage and documentation links on npm and PyPI, and the Batch API link in each README, now go to `https://mellix.com/docs`. They pointed at mellix.ai, which does not exist.
 - Both clients now default to the hosted API at `https://api.mellix.com` (`DEFAULT_BASE_URL`) and the console at `https://console.mellix.com` (`DEFAULT_ADMIN_BASE_URL`), where the Mellix docs say they are. 0.0.1 defaulted to `api.mellix.ai` and `console.mellix.ai`, which never answered, so only a client given its own `base_url` / `baseURL` (and `admin_base_url` / `adminBaseURL`) worked; those are unaffected.

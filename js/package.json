@@ -1,6 +1,6 @@
 {
   "name": "mellix",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "JavaScript/TypeScript client for the Mellix Decision API",
   "type": "module",
   "license": "Apache-2.0",
