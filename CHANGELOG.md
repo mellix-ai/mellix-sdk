@@ -3,6 +3,7 @@
 ## Unreleased
 
 - Both clients now retry 529 `overloaded` (the API is at capacity), honouring its `Retry-After`, as they do 429, 502 and 503. The API refuses a 529 before running or billing the request, so a retry is safe; until now a 529 was raised at once.
+- The default per-attempt `timeout` is now 120 seconds (`timeout=120` in Python, `timeout: 120000` in JavaScript), up from 30. When it is busy the API now holds a request for up to 30 seconds waiting for room before answering it, so a 30-second timeout could give up on a request that was about to be answered, and its retry would then wait for the first attempt to finish. Pass `timeout` to keep the old value.
 - The package homepage and documentation links on npm and PyPI, and the Batch API link in each README, now go to `https://mellix.com/docs`. They pointed at mellix.ai, which does not exist.
 - Both clients now default to the hosted API at `https://api.mellix.com` (`DEFAULT_BASE_URL`) and the console at `https://console.mellix.com` (`DEFAULT_ADMIN_BASE_URL`), where the Mellix docs say they are. 0.0.1 defaulted to `api.mellix.ai` and `console.mellix.ai`, which never answered, so only a client given its own `base_url` / `baseURL` (and `admin_base_url` / `adminBaseURL`) worked; those are unaffected.
 

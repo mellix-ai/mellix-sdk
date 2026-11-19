@@ -212,7 +212,7 @@ try {
 
 ## Retries
 
-429, 502, 503, 529 (the API is at capacity) and connection errors are retried (except where noted for key management and batch submissions) up to `maxRetries` times (default 3) with exponential backoff of 0.5s, 1s, 2s. A `Retry-After` header (seconds) is honoured instead, capped at 60s. Other errors, including 402 and 403, are thrown immediately. `timeout` is in milliseconds (default 30000) and applies to each attempt.
+429, 502, 503, 529 (the API is at capacity) and connection errors are retried (except where noted for key management and batch submissions) up to `maxRetries` times (default 3) with exponential backoff of 0.5s, 1s, 2s. A `Retry-After` header (seconds) is honoured instead, capped at 60s. Other errors, including 402 and 403, are thrown immediately. `timeout` is in milliseconds (default 120000) and applies to each attempt.
 
 ```ts
 const client = new Mellix({ apiKey: "mellix_...", timeout: 10_000, maxRetries: 5 });

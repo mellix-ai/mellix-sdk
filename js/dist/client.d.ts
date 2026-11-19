@@ -47,7 +47,7 @@ export interface MellixOptions {
     adminKey?: string;
     /** Where the key management API is. Defaults to https://console.mellix.com. */
     adminBaseURL?: string;
-    /** Per-attempt timeout in milliseconds. Default 30000. */
+    /** Per-attempt timeout in milliseconds. Default 120000 (the API may queue a request up to 30 s for room before answering it). */
     timeout?: number;
     /** Retries after the first attempt for 429, 502, 503, 529 and connection errors. Default 3. */
     maxRetries?: number;

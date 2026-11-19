@@ -90,7 +90,7 @@ export class Mellix {
             lines: (path) => this.streamLines(path, this.requireKey()),
             sleep: (ms, signal) => abortable(this.sleep(ms), signal),
         });
-        this.timeout = options.timeout ?? 30_000;
+        this.timeout = options.timeout ?? 120_000;
         this.maxRetries = maxRetries;
         this.fetchImpl = options.fetch;
         this.sleep = options.sleep ?? ((ms) => new Promise((r) => setTimeout(r, ms)));

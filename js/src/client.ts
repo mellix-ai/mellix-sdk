@@ -70,7 +70,7 @@ export interface MellixOptions {
   adminKey?: string;
   /** Where the key management API is. Defaults to https://console.mellix.com. */
   adminBaseURL?: string;
-  /** Per-attempt timeout in milliseconds. Default 30000. */
+  /** Per-attempt timeout in milliseconds. Default 120000 (the API may queue a request up to 30 s for room before answering it). */
   timeout?: number;
   /** Retries after the first attempt for 429, 502, 503, 529 and connection errors. Default 3. */
   maxRetries?: number;
@@ -158,7 +158,7 @@ export class Mellix {
       lines: (path) => this.streamLines(path, this.requireKey()),
       sleep: (ms, signal) => abortable(this.sleep(ms), signal),
     });
-    this.timeout = options.timeout ?? 30_000;
+    this.timeout = options.timeout ?? 120_000;
     this.maxRetries = maxRetries;
     this.fetchImpl = options.fetch;
     this.sleep = options.sleep ?? ((ms) => new Promise((r) => setTimeout(r, ms)));

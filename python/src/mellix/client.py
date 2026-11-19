@@ -97,7 +97,7 @@ class Mellix:
         self,
         api_key: Optional[str] = None,
         base_url: str = DEFAULT_BASE_URL,
-        timeout: float = 30,
+        timeout: float = 120,  # the API may queue a request up to 30 s for room before answering it
         max_retries: int = 3,
         on_key_expiry: Optional[Callable[[KeyExpiry], None]] = None,
         admin_key: Optional[str] = None,
