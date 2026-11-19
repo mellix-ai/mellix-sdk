@@ -458,6 +458,21 @@ class RetryTests(Base):
         self.assertEqual(cm.exception.retry_after, 30.0)
         self.assertEqual(self.sleeps, [])
 
+    def test_overloaded_529_retried_with_retry_after(self):
+        self.reply(529, {"error": "the service is at capacity just now; retry after 2 seconds", "type": "overloaded",
+                         "retry_after": 2}, {"Retry-After": "2"})
+        self.reply(200, {"model": "m", "answers": {"q": NOUL}})
+        self.assertEqual(self.ask().answers["q"].noul, 0.04)
+        self.assertEqual(self.sleeps, [2.0])
+        self.assertEqual(len(self.server.requests), 2)
+
+    def test_overloaded_529_raised_after_max_retries(self):
+        c = Mellix(api_key="k", base_url=self.server.url, max_retries=0)
+        self.reply(529, {"error": "at capacity", "type": "overloaded"}, {"Retry-After": "2"})
+        with self.assertRaises(APIError) as cm:
+            c.decide("s", {"q": noul("x")})
+        self.assertEqual((cm.exception.status, cm.exception.type), (529, "overloaded"))
+
     def test_max_retries_zero(self):
         c = Mellix(api_key="k", base_url=self.server.url, max_retries=0)
         self.reply(503, {"error": "maintenance"})

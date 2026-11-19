@@ -8,7 +8,7 @@ import { Batches } from "./batches.js";
 import { idempotencyHeaders } from "./idempotency.js";
 export const DEFAULT_BASE_URL = "https://api.mellix.com";
 export const DEFAULT_ADMIN_BASE_URL = "https://console.mellix.com";
-const RETRY_STATUSES = new Set([429, 502, 503]);
+const RETRY_STATUSES = new Set([429, 502, 503, 529]); // 529: the API is at capacity, refused unrun and unbilled
 const BACKOFF_BASE_MS = 500;
 const MAX_RETRY_AFTER_MS = 60_000;
 /**
