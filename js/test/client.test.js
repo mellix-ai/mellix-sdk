@@ -108,7 +108,7 @@ test("env var token, explicit key wins", async () => {
 const cases = [
   [401, AuthenticationError, false], [402, OutOfCreditError, false], [403, PermissionDeniedError, false], [400, InvalidRequestError, false], [404, InvalidRequestError, false],
   [411, InvalidRequestError, false], [413, InvalidRequestError, false], [422, InvalidRequestError, false],
-  [429, RateLimitError, true], [502, APIError, true], [503, APIError, true], [500, APIError, false],
+  [429, RateLimitError, true], [502, APIError, true], [503, APIError, true], [529, APIError, true], [500, APIError, false],
 ];
 for (const [status, cls, retried] of cases) {
   test(`HTTP ${status} -> ${cls.name}`, async () => {
@@ -171,6 +171,16 @@ test("backoff 0.5s, 1s, 2s then success", async () => {
   assert.equal((await ask(client)).answers.q.noul, 0.04);
   assert.deepEqual(sleeps, [500, 1000, 2000]);
   assert.equal(calls.length, 4);
+});
+
+test("529 overloaded retried after its Retry-After", async () => {
+  const { client, calls, sleeps } = setup([
+    [529, { error: "the service is at capacity just now; retry after 2 seconds", type: "overloaded", retry_after: 2 }, { "Retry-After": "2" }],
+    [200, { model: "m", answers: { q: NOUL } }],
+  ]);
+  assert.equal((await ask(client)).answers.q.noul, 0.04);
+  assert.deepEqual(sleeps, [2000]);
+  assert.equal(calls.length, 2);
 });
 
 test("Retry-After honoured and exposed", async () => {

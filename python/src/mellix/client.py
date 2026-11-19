@@ -33,7 +33,7 @@ DEFAULT_BASE_URL = "https://api.mellix.com"
 DEFAULT_ADMIN_BASE_URL = "https://console.mellix.com"
 ENV_API_KEY = "MELLIX_API_TOKEN"
 ENV_ADMIN_KEY = "MELLIX_ADMIN_KEY"
-RETRY_STATUSES = frozenset({429, 502, 503})
+RETRY_STATUSES = frozenset({429, 502, 503, 529})  # 529: the API is at capacity, refused unrun and unbilled
 BACKOFF_BASE = 0.5
 MAX_RETRY_AFTER = 60.0
 USER_AGENT = f"mellix-python/{__version__}"
@@ -97,7 +97,7 @@ class Mellix:
         self,
         api_key: Optional[str] = None,
         base_url: str = DEFAULT_BASE_URL,
-        timeout: float = 30,
+        timeout: float = 120,  # the API may queue a request up to 30 s for room before answering it
         max_retries: int = 3,
         on_key_expiry: Optional[Callable[[KeyExpiry], None]] = None,
         admin_key: Optional[str] = None,

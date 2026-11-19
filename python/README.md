@@ -214,7 +214,7 @@ except MellixError as e:
 
 ## Retries
 
-429, 502, 503 and connection errors are retried up to `max_retries` times (default 3) with exponential backoff of 0.5s, 1s, 2s. A `Retry-After` header (seconds) is honoured instead, capped at 60s. Other errors, including 402 and 403, are raised immediately. `timeout` (seconds, default 30) applies to each attempt.
+429, 502, 503, 529 (the API is at capacity) and connection errors are retried up to `max_retries` times (default 3) with exponential backoff of 0.5s, 1s, 2s. A `Retry-After` header (seconds) is honoured instead, capped at 60s. Other errors, including 402 and 403, are raised immediately. `timeout` (seconds, default 120) applies to each attempt.
 
 ```python
 client = Mellix(api_key="mellix_...", timeout=10, max_retries=5)
